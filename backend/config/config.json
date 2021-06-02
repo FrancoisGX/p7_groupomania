@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "DBpassword@123",
-    "database": "groupomania_dev",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   },
   "test": {
-    "username": "root",
-    "password": "DBpassword@123",
-    "database": "groupomania_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   },
   "production": {
-    "username": "root",
-    "password": "DBpassword@123",
-    "database": "groupomania_prod",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   }
 }
