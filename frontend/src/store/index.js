@@ -34,7 +34,6 @@ export default createStore({
       password:'',
     },
     userMessages:[],
-    userComments:[]
 
   },
   mutations: {
@@ -52,10 +51,6 @@ export default createStore({
     userMessages: function(state, userMessages){
       state.userMessages = userMessages;
       console.log(state.userMessages);
-    },
-    getComments: function(state, getComments){
-      state.getComments = getComments;
-      console.log(state.getComments);
     },
     addMessage: function(state, userMessages){
       state.userMessages.push(userMessages);
@@ -138,13 +133,6 @@ export default createStore({
 
     getuserMessages :({commit}) => {
       instance.get('/message/')
-      .then(function(response){
-        commit('userMessages', response.data);
-      })
-    },
-    getComments :({commit},data) => {
-      console.log(data)
-      instance.get('/message/'+data.id+'/comments')
       .then(function(response){
         commit('userMessages', response.data);
       })

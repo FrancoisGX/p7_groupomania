@@ -22,25 +22,6 @@
                 <div class="groupe-texte scroller">
                     <p class="ml-1 titre-message font-weight-bold">Sujet: {{message.title}}</p>
                     <p class="message">{{message.content}}</p>
-                    <button v-if="mode == 'comment'" @click="showComments(message.id)" class="btn btn-primary">Afficher les commentaires</button>
-                    <button v-if="mode == 'comment'" @click="switchToNocomment()" class="btn btn-primary">Cacher les commentaires</button>
-                    <div v-if="mode == 'comment'" class="texte-content">
-                        <div class="row" v-for='comment in comments' :key="comment">
-                            <textarea class="row" placeholder="Ecrivez votre message..." type="text" v-model="content" id="content"  name="content" required></textarea>
-                            <button @click="createComment()" class="btn btn-primary">Publier le commentaire</button>
-                        </div>
-                        <div class="comment-card">
-                            <div class="row ">
-                                <p class="pseudo ml-4">pseudo</p>
-                            </div>
-                            <div class="row">
-                                <p class="date ml-4">{{comment.createdAt}}</p>
-                            </div>
-                            <div class="row">
-                                <p class="comment-text ml-4">{{comment.comment}}</p>
-                            </div>
-                        </div>
-                    </div> 
                 </div>
             </div>
         </div>
@@ -60,7 +41,6 @@
             mode: "normal",
             title: '',
             content: '',
-            comment:''
             }
         },
         computed: {
@@ -72,7 +52,7 @@
                 }
             },
             messages () { return this.$store.state.userMessages },
-            comments () { return this.$store.state.userComments }
+
         },
         mounted: 
         function () {
@@ -92,14 +72,6 @@
                     this.$store.dispatch('deleteMessage',{id})
                 }
             },
-           /* showComments: function(id) {
-                this.mode = 'comment';  
-                console.log(id)
-                this.$store.dispatch('getComments',{id})
-            },
-            switchToNocomment: function () {
-                this.mode = 'normal';
-            },*/
 
             createMessage: function () {
                 this.$store.dispatch('createMessage',{
