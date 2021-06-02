@@ -26,7 +26,7 @@
                     <button v-if="mode == 'modif-bio'" @click="switchToBio()" class="btn btn-danger mx-4">Annuler</button>
                 </div>    
             </div>
-            <button @click="ConfirmMessage()" class="btn btn-danger mb-5">Supprimer le compte</button>
+            <button @click="ConfirmMessage(user.id)" class="btn btn-danger mb-5">Supprimer le compte</button>
         </div>
         <Footer/>
     </div>
@@ -65,12 +65,6 @@
             }),
         },
         methods :{
-            randomItem (items) {
-                 return items[Math.floor(Math.random()*items.length)];
-            },
-            created() {
-                this.selectedImage = this.randomItem(this.images)
-            },
             switchToModifBio: function () {
                 this.mode = 'modif-bio';
             },
@@ -85,10 +79,10 @@
                     console.log(error);
                 }
             },
-            ConfirmMessage: function() {
+            ConfirmMessage: function(id) {
                 if (confirm("Voulez-vous vraiment supprimer votre compte ?")) {
                     const self = this;
-                    this.$store.dispatch('deleteAccount')
+                    this.$store.dispatch('deleteAccount', {id})
                     .then(function(){self.$router.push('/');
                     }),function (error){
                     console.log(error);

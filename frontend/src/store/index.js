@@ -55,12 +55,10 @@ export default createStore({
     addMessage: function(state, userMessages){
       state.userMessages.push(userMessages);
     },
-    deleteMessage: function(state, /*deleteMessage*/){
-      console.log(state.userMessages.length)
-      //const postion = state.userMessages.findIndex( (el) => el.id===deleteMessage);
-      //state.userMessages.splice(postion,1)
-      //state.userMessages = [...state.userMessages]
-      console.log(state.userMessages.length)
+    deleteMessage: function(state, deleteMessage){
+      const postion = state.userMessages.findIndex( (el) => el.id===deleteMessage);
+      state.userMessages.splice(postion,1)
+      state.userMessages = [...state.userMessages]
     },
 
     logout: function(state) {
@@ -102,8 +100,8 @@ export default createStore({
         })
       })  
     },
-    deleteAccount: ({commit}) =>{
-      instance.delete('/user/:id')
+    deleteAccount: ({commit},data) =>{
+      instance.delete('/user/'+data.id)
       .then(function (response){
         commit('userInfos', response.data);
       })
